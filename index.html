@@ -9,18 +9,17 @@
 </head>
 <body>
     
-    <button onclick="openModal()" class="modal-open"><div><img src="resources/coin-img.png" alt="coin-img"><p>Como jugar</p></div></button>
+    <button onclick="openModal()" class="modal-open"><div><img src="resources/coin-img.png" alt="coin-img" draggable="false"><p>Como jugar</p></div></button>
     <div id="myModal" class="modal">
-        
-        <div class="modal-content">
+        <div class="modal-content" draggable="false">
             <span onclick="closeModal()" class="close">X</span>
             <p>Selecciona el vaso en el que crees que esta la pelota para ganar puntos</p>
         </div>
     </div>
 
     <div class="game-container">
-        <div class="background"><img src="resources/background.png" alt="background-img"></div>
-        <div class="cups-container" id="cups-container">
+        <div class="background" draggable="false"><img src="resources/background.png" alt="background-img" draggable="false"></div>
+        <div class="cups-container" id="cups-container" draggable="false">
         </div>
     </div>
 

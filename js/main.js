@@ -1,6 +1,7 @@
 let firstTime = true; // Flag to track if it's the first time playing the game
 let cupNumber = 3; // Number of cups in the game
 let probabilityOffset = 2; // Offset for the probability of adding a ball to a cup
+const cupHTML = '<div class="cup-container" draggable="false"><div class="cup"><img src="resources/cup-img.png" alt="cup-img" draggable="false"></div></div>'; //cup html code
 
 let cupsContainer = document.getElementById("cups-container"); // Container element for the cups
 let cupContainer; // Array to store the cup container elements
@@ -25,7 +26,7 @@ function shuffle() {
 function createCups() {
   // Create cup containers
   for (let index = 0; index < cupNumber; index++) {
-    cupsContainer.innerHTML += '<div class="cup-container"><div class="cup"><img src="resources/cup-img.png" alt="cup-img"></div></div>';
+    cupsContainer.innerHTML += cupHTML;
   }
 
   // Get cup elements and cup container elements
@@ -38,9 +39,10 @@ function createCups() {
 
   if(!firstTime){
     // Add motion blur cups to existing cup containers
+    const blurCupHTML = '<div class="motion-blur-cup cup" draggable="false"><img src="resources/cup-img.png" alt="cup-img" draggable="false"></div>';
     for (let index = 0; index < cupContainerArray.length; index++) {
-      cupContainerArray[index].innerHTML += '<div class="motion-blur-cup cup"><img src="resources/cup-img.png" alt="cup-img"></div>';
-      cupContainerArray[index].innerHTML += '<div class="motion-blur-cup cup"><img src="resources/cup-img.png" alt="cup-img"></div>';
+      cupContainerArray[index].innerHTML += blurCupHTML;
+      cupContainerArray[index].innerHTML += blurCupHTML;
     }
 
     // Create a timeline for cup shuffling animation
@@ -66,7 +68,7 @@ function createCups() {
       if (!selected) {
         // Add ball randomly to a cup container
         if (Math.floor(Math.random() * (cupNumber + probabilityOffset)) == 1) {
-          element.innerHTML += '<div class="ball"><img src="resources/ball-img.png" alt="ball-img"></div>';
+          element.innerHTML += '<div class="ball"><img src="resources/ball-img.png" alt="ball-img" draggable="false"></div>';
         }
         let cup = element.querySelector(".cup");
         cup.classList.add("cup-animation");
