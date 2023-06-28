@@ -2,7 +2,7 @@ let firstTime = true; // Flag to track if it's the first time playing the game
 let cupNumber = 3; // Number of cups in the game
 let probabilityOffset = 2; // Offset for the probability of adding a ball to a cup
 const cupHTML = '<div class="cup-container" draggable="false"><div class="cup"><img src="resources/cup-img.png" alt="cup-img" draggable="false"></div></div>'; //cup html code
-
+const resultDiv = document.getElementById("result-div")
 let cupsContainer = document.getElementById("cups-container"); // Container element for the cups
 let cupContainer; // Array to store the cup container elements
 
@@ -69,7 +69,13 @@ function createCups() {
         // Add ball randomly to a cup container
         if (Math.floor(Math.random() * (cupNumber + probabilityOffset)) == 1) {
           element.innerHTML += '<div class="ball"><img src="resources/ball-img.png" alt="ball-img" draggable="false"></div>';
-        }
+         
+         resultDiv.innerHTML += '<img src="resources/win-img.png" alt="" id="result-img">'
+         }
+         else{
+
+          resultDiv.innerHTML += '<img src="resources/lose-img.png" alt="" id="result-img">'
+         }
         let cup = element.querySelector(".cup");
         cup.classList.add("cup-animation");
         selected = true;
@@ -78,6 +84,7 @@ function createCups() {
         setTimeout(() => {
           deleteCups();
           createCups();
+          resultDiv.innerHTML = ""
         }, 3000);
       }
     });

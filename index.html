@@ -9,20 +9,19 @@
 </head>
 <body>
     
+    <button onclick="openModal()" class="modal-open"><div><img src="resources/coin-img.png" alt="coin-img" draggable="false"><p>Como jugar</p></div></button>
+    <div id="myModal" class="modal">
+        <div class="modal-content" draggable="false">
+            <span onclick="closeModal()" class="close">X</span>
+            <p>Selecciona el vaso en el que crees que esta la pelota para ganar puntos</p>
+        </div>
+    </div>
 
     <div class="game-container">
         <div class="background" draggable="false"><img src="resources/background.png" alt="background-img" draggable="false"></div>
-        <div class="cups-container" id="cups-container" draggable="false"></div>
-        
-        <button onclick="openModal()" class="modal-open"><div><img src="resources/coin-img.png" alt="coin-img" draggable="false"><p>Como jugar</p></div></button>
-    </div>
-
-    
-    <div id="myModal" class="modal">
-        <img src="resources/modal-img.png" alt="modal-background-img">
-        <span onclick="closeModal()" class="close">X</span>
-        <div class="modal-content" draggable="false">
-            <p>Selecciona el vaso en el que crees que esta la pelota para ganar puntos       Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores dolore nobis asperiores quos! Officia, voluptatibus consectetur. Quos, voluptate! Ipsa facere, aliquid accusamus placeat hic aspernatur architecto obcaecati suscipit veritatis modi?  Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptatibus molestiae at voluptate unde voluptatum laboriosam, suscipit, delectus debitis quae rem eveniet dolores illum, optio ipsam ab maxime magnam praesentium!</p>
+        <div class="cups-container" id="cups-container" draggable="false">
+        </div>
+        <div class="result-div" id="result-div">
         </div>
     </div>
 
@@ -30,7 +29,7 @@
     <script>
         // Función para abrir el modal
         function openModal() {
-          document.getElementById("myModal").style.display = "flex";
+          document.getElementById("myModal").style.display = "block";
           document.getElementById("myModal").classList.add("modal-active");
         }
       
