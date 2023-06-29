@@ -67,25 +67,26 @@ function createCups() {
   cupContainerArray.forEach((element) => {
     element.addEventListener('click', () => {
       if (!selected) {
+        let cup = element.querySelector(".cup");
+        cup.classList.add("cup-animation");
+        selected = true;
         playCupSound();
         // Add ball randomly to a cup container
         if (Math.floor(Math.random() * (cupNumber + probabilityOffset)) == 1) {
           element.innerHTML += '<div class="ball"><img src="resources/ball-img.png" alt="ball-img" draggable="false"></div>';
+          resultDiv.innerHTML += '<img src="resources/win-img.png" alt="" id="result-img">'
           playWinSound();
           
         }
         else {
+            resultDiv.innerHTML += '<img src="resources/lose-img.png" alt="" id="result-img">'
             playLoseSound();
         }
-
-        let cup = element.querySelector(".cup");
-        cup.classList.add("cup-animation");
-        selected = true;
-
         // Reset the game after 3 seconds
         setTimeout(() => {
           deleteCups();
           createCups();
+          resultDiv.innerHTML = ""
         }, 3000);
       }
     });
