@@ -15,6 +15,7 @@ function shuffle() {
   // Do the actual shuffling of the cup containers
   for (let i = items.length; i >= 0; i--) {
     cupsContainer.appendChild(cupsContainer.children[Math.random() * i | 0]);
+    playCupMoveSound();
   }
   
   // Animate the change using the Flip library
@@ -66,10 +67,17 @@ function createCups() {
   cupContainerArray.forEach((element) => {
     element.addEventListener('click', () => {
       if (!selected) {
+        playCupSound();
         // Add ball randomly to a cup container
         if (Math.floor(Math.random() * (cupNumber + probabilityOffset)) == 1) {
           element.innerHTML += '<div class="ball"><img src="resources/ball-img.png" alt="ball-img" draggable="false"></div>';
+          playWinSound();
+          
         }
+        else {
+            playLoseSound();
+        }
+
         let cup = element.querySelector(".cup");
         cup.classList.add("cup-animation");
         selected = true;
@@ -91,3 +99,27 @@ createCups();
 function deleteCups() {
   cupsContainer.innerHTML = '';
 }
+
+function playWinSound() {
+    const winSound = document.getElementById('winSound');
+    winSound.currentTime = 0; // Reinicia el audio a la posición inicial
+    winSound.play();
+  }
+  
+  function playLoseSound() {
+    const loseSound = document.getElementById('loseSound');
+    loseSound.currentTime = 0;
+    loseSound.play();
+  }
+  
+  function playCupSound() {
+    const cupSound = document.getElementById('cupSound');
+    cupSound.currentTime = 0;
+    cupSound.play();
+  }
+
+  function playCupMoveSound() {
+    const cupMoveSound = document.getElementById('cupMoveSound');
+    cupMoveSound.currentTime = 0;
+    cupMoveSound.play();
+  }
